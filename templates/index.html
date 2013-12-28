@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Overview</h2>
+  {% if g.user %}
+    <p>
+      Hello {{ g.user.username }}
+    {% if titles %}
+    <h3>Your Timeline</h3>
+    <ul>
+    {% for title in titles %}
+      <li>{{ title }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+  {% else %}
+    <p>
+      Sign in to view some result to the search query for your profile.
+    <p>
+    <a href="{{ url_for('login') }}">sign in</a>
+  {% endif %}
+{% endblock %}
